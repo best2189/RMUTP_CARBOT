@@ -192,21 +192,48 @@ car.Stop();          หยุดมอเตอร์ทุกตัว
 ```cpp
 #include <RMUTP_CARBOT.h>
 
-RMUTP_CARBOT car(12,14,27,33,26,25);
+// =======================
+// กำหนดขา (Pin)
+// =======================
+const int ENA = 12;
+const int IN1 = 14;
+const int IN2 = 27;
+const int IN3 = 26;
+const int IN4 = 25;
+const int ENB = 33;
+
+// =======================
+// กำหนดค่า PWM
+// =======================
+const int freq = 1000;        // ความถี่
+const int resolution = 8;     // 8-bit (0–255)
+const int pwmChannelA = 0;    // ล้อซ้าย
+const int pwmChannelB = 1;    // ล้อขวา
+
+// =======================
+// กำหนดความเร็ว
+// =======================
+const int SPEED_MAX = 100;
+const int SPEED_TURN = 80;
+
+// =======================
+// สร้าง object
+// =======================
+RMUTP_CARBOT car(ENA, IN1, IN2, ENB, IN3, IN4);
 
 void setup() {
-  car.begin(1000, 8, 0, 1);
+  car.begin(freq, resolution, pwmChannelA, pwmChannelB);
 }
 
 void loop() {
 
-  car.Forward(100);
+  car.Forward(SPEED_MAX);   // วิ่งตรงเต็มสปีด
   delay(2000);
 
-  car.TurnRight2(80);
+  car.TurnRight2(SPEED_TURN); // หมุนขวา
   delay(1000);
 
-  car.Stop();
+  car.Stop();               // หยุด
   delay(1000);
 }
 ```
@@ -250,7 +277,7 @@ git clone https://github.com/yourname/RMUTP_CARBOT.git
 # 👨‍💻 ผู้พัฒนา
 
 นาย สุพงศ์ เฉลิมชัยนุวงศ์ 
-![Uploading image.png…]()
+
 
 
 ---
