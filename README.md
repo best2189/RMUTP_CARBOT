@@ -19,15 +19,12 @@
 <p align="center">
   <img src="image/t1.png" width="610"/>
 </p>
-
+<br>
+<br>
 <p align="center">
-  <img src="image/t2.jpg" width="610"/>
+  <img src="image/t2.jpg" width="300"/>
+  <img src="image/t3.jpg" width="300"/>
 </p>
-
-<p align="center">
-  <img src="image/t3.jpg" width="610"/>
-</p>
-
 
 # ✨ คุณสมบัติ (Features)
 
