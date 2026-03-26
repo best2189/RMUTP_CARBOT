@@ -37,9 +37,10 @@ GPIO12 (ENA)  →  ENA (PWM ซ้าย)
 GPIO14 (IN1)  →  IN1
 GPIO27 (IN2)  →  IN2
 
-GPIO33 (ENB)  →  ENB (PWM ขวา)
+
 GPIO26 (IN3)  →  IN3
 GPIO25 (IN4)  →  IN4
+GPIO33 (ENB)  →  ENB (PWM ขวา)
 
 GND           →  GND (ต้องร่วมกัน)
 ```
@@ -116,7 +117,13 @@ RMUTP_CARBOT car(ENA, IN1, IN2, ENB, IN3, IN4);
 ## 📌 เริ่มต้นระบบ
 
 ```cpp
-car.begin(1000, 8, 0, 1);
+car.begin(freq, resolution, pwmChannelA, pwmChannelB);
+
+= ตั้งค่า PWM ให้ ESP32 คุมมอเตอร์
+freq → ความลื่น/ความถี่
+resolution → ความละเอียดความเร็ว 8 bit  (0–255)   10 bit 0 - 1023  12 bit 0 - 4096
+pwmChannelA → ล้อซ้าย
+pwmChannelB → ล้อขวา
 ```
 
 ---
@@ -126,11 +133,11 @@ car.begin(1000, 8, 0, 1);
 ## 🔸 ควบคุมแยกล้อ
 
 ```cpp
-car.L_Forward(50);
-car.L_Reverse(50);
+car.L_Forward(50);   // ล้อซ้ายเดินหน้า ความเร็ว 50% (0–100)
+car.L_Reverse(50);   // ล้อซ้ายถอยหลัง ความเร็ว 50%
 
-car.R_Forward(50);
-car.R_Reverse(50);
+car.R_Forward(50);   // ล้อขวาเดินหน้า ความเร็ว 50%
+car.R_Reverse(50);   // ล้อขวาถอยหลัง ความเร็ว 50%
 ```
 
 ---
@@ -138,9 +145,9 @@ car.R_Reverse(50);
 ## 🔸 ควบคุมทั้งคัน
 
 ```cpp
-car.Forward(100);
-car.Reverse(100);
-car.Stop();
+car.Forward(100);    เดินหน้า4ล้อด้วยความเร็ว 100%
+car.Reverse(100);    ถอยหน้า4ล้อด้วยความเร็ว 100%
+car.Stop();          หยุดมอเตอร์ทุกตัว
 ```
 
 ---
@@ -179,19 +186,6 @@ car.Stop();
 
 ---
 
-# ⚡ PWM (ความเร็ว)
-
-```cpp
-0 – 100 (%)
-```
-
-ภายใน:
-
-```cpp
-0 – 255 (8-bit)
-```
-
----
 
 # 📁 ตัวอย่างโค้ด
 
