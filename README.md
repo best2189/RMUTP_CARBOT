@@ -16,6 +16,18 @@
   <img src="image/L298N-label.webp" width="610"/>
 </p>
 
+<p align="center">
+  <img src="image/t1.png" width="610"/>
+</p>
+
+<p align="center">
+  <img src="image/t2.jpg" width="610"/>
+</p>
+
+<p align="center">
+  <img src="image/t3.jpg" width="610"/>
+</p>
+
 
 # ✨ คุณสมบัติ (Features)
 
