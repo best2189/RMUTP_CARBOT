@@ -1,6 +1,8 @@
-# 🚗 RMUTP_CARBOT (Arduino Library สำหรับรถ 2 ล้อ ESP32)
+# 🚗 RMUTP_CARBOT
+# (Arduino Library สำหรับรถ 2 ล้อ ESP32)
 
-**RMUTP_CARBOT** เป็นไลบรารี Arduino สำหรับควบคุมรถยนต์ 2 ล้อ (2WD Robot Car) โดยใช้ ESP32 และไดร์เวอร์มอเตอร์ เช่น L298N
+**RMUTP_CARBOT** 
+เป็นไลบรารี Arduino สำหรับควบคุมรถยนต์ 2 ล้อ (2WD Robot Car) โดยใช้ ESP32 และไดร์เวอร์มอเตอร์ เช่น L298N
 
 ออกแบบให้ใช้งานง่าย ควบคุมได้ทั้ง:
 
@@ -9,6 +11,10 @@
 * หมุนอยู่กับที่
 * ปรับความเร็วด้วย PWM
 
+
+<p align="center">
+  <img src="image/L298N-label.webp" width="200"/>
+</p>
 ---
 
 # ✨ คุณสมบัติ (Features)
@@ -278,7 +284,7 @@ git clone https://github.com/yourname/RMUTP_CARBOT.git
 นาย สุพงศ์ เฉลิมชัยนุวงศ์ 
 
 <p align="center">
-  <img src="image/spg.png" width="600"/>
+  <img src="image/spg.png" width="200"/>
 </p>
 
 
