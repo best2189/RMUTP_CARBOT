@@ -11,17 +11,19 @@
 * เลี้ยว
 * หมุนอยู่กับที่
 * ปรับความเร็วด้วย PWM
-
+<br>
+<br>
 <p align="center">
   <img src="image/L298N-label.webp" width="610"/>
 </p>
-
+<br>
+<br>
 <p align="center">
   <img src="image/t1.png" width="800"/>
 </p>
 <h2 align="center">🔌 การต่อมอเตอร์ (Motor Wiring)</h2>
 
-<p align="center" style="font-size:20px; font-weight:bold;">
+<p align="center" style="font-size:40px; font-weight:bold;">
 
 🔴 ➕ มอเตอร์ซ้าย → <span style="color:red;">M1</span><br><br>
 ⚫ ➖ มอเตอร์ซ้าย → <span style="color:black;">M2</span><br><br>
@@ -32,6 +34,8 @@
 
 </p>
 
+<br>
+<br>
 <br>
 <br>
 
