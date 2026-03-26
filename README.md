@@ -12,7 +12,7 @@
 * ปรับความเร็วด้วย PWM
 
 <p align="center">
-  <img src="image/L298N-label.webp" width="600"/>
+  <img src="image/L298N-label.webp" width="610"/>
 </p>
 
 
@@ -282,18 +282,12 @@ git clone https://github.com/yourname/RMUTP_CARBOT.git
 # 👨‍💻 ผู้พัฒนา
 นาย สุพงศ์ เฉลิมชัยนุวงศ์ 
 
-<p align="center">
-  <img src="image/spg.png" width="50"/>
+<p align="left">
+  <img src="image/spg.png" width="65"/>
 </p>
-
-
-
----
 
 # 📄 License
 
-สุพงศ์
-
----
+สุพงศ์ เฉลิมชัยนุวงศ์ 
 
 [1]: https://randomnerdtutorials.com/esp32-dc-motor-l298n-motor-driver-control-speed-direction/?utm_source=chatgpt.com "ESP32 with DC Motor - Control Speed and Direction | Random Nerd Tutorials"
