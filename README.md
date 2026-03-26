@@ -249,13 +249,15 @@ git clone https://github.com/yourname/RMUTP_CARBOT.git
 
 # 👨‍💻 ผู้พัฒนา
 
-RMUTP Project
+นาย สุพงศ์ เฉลิมชัยนุวงศ์ 
+![Uploading image.png…]()
+
 
 ---
 
 # 📄 License
 
-MIT License
+สุพงศ์
 
 ---
 
