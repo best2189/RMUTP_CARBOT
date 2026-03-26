@@ -17,10 +17,24 @@
 </p>
 
 <p align="center">
-  <img src="image/t1.png" width="610"/>
+  <img src="image/t1.png" width="800"/>
 </p>
+<h2 align="center">🔌 การต่อมอเตอร์ (Motor Wiring)</h2>
+
+<p align="center" style="font-size:20px; font-weight:bold;">
+
+🔴 ➕ มอเตอร์ซ้าย → <span style="color:red;">M1</span><br><br>
+⚫ ➖ มอเตอร์ซ้าย → <span style="color:black;">M2</span><br><br>
+
+🔴 ➕ มอเตอร์ขวา → <span style="color:red;">M4</span><br><br>
+⚫ ➖ มอเตอร์ขวา → <span style="color:black;">M3</span><br><br>
+
+
+</p>
+
 <br>
 <br>
+
 <p align="center">
   <img src="image/t2.jpg" width="300"/>
   <img src="image/t3.jpg" width="300"/>
