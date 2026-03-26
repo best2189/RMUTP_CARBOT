@@ -275,9 +275,11 @@ git clone https://github.com/yourname/RMUTP_CARBOT.git
 ---
 
 # 👨‍💻 ผู้พัฒนา
-
 นาย สุพงศ์ เฉลิมชัยนุวงศ์ 
-![Wiring Diagram](image/spg.png)
+
+<p align="center">
+  <img src="image/spg.png" width="600"/>
+</p>
 
 
 
