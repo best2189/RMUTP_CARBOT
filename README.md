@@ -1,82 +1,268 @@
-# \# RMUTP\_CARBOT
+# 🚗 RMUTP_CARBOT (Arduino Library สำหรับรถ 2 ล้อ ESP32)
 
-# 
+**RMUTP_CARBOT** เป็นไลบรารี Arduino สำหรับควบคุมรถยนต์ 2 ล้อ (2WD Robot Car) โดยใช้ ESP32 และไดร์เวอร์มอเตอร์ เช่น L298N
 
-# RMUTP\_CARBOT is an Arduino library for controlling 2WD car robots using ESP32 and motor drivers such as L298N.
+ออกแบบให้ใช้งานง่าย ควบคุมได้ทั้ง:
 
-# 
+* วิ่งหน้า / ถอยหลัง
+* เลี้ยว
+* หมุนอยู่กับที่
+* ปรับความเร็วด้วย PWM
 
-# The library provides simple functions for forward, reverse, turning, and speed control using PWM.
+---
 
-# 
+# ✨ คุณสมบัติ (Features)
 
-# \---
+* ควบคุมล้อซ้าย–ขวาแยกอิสระ
+* เดินหน้า / ถอยหลัง / หยุด
+* เลี้ยว (Soft Turn / Spin Turn)
+* ปรับความเร็ว (0–100%)
+* ใช้ PWM ของ ESP32 (LEDC)
 
-# 
+---
 
-# \## Features
+# ⚙️ รองรับ (Compatibility)
 
-# \- Control left and right motors independently
+* ✅ ESP32 เท่านั้น
+* ❌ ไม่รองรับ Arduino UNO / Mega
 
-# \- Forward / Reverse / Stop control
+---
 
-# \- Turning (soft turn / pivot turn)
+# 🔌 การต่อวงจร (ESP32 + L298N)
 
-# \- PWM speed control (0–100%)
+```plaintext
+ESP32            L298N
+----------------------------
+GPIO12 (ENA)  →  ENA (PWM ซ้าย)
+GPIO14 (IN1)  →  IN1
+GPIO27 (IN2)  →  IN2
 
-# \- Fully compatible with ESP32 (LEDC PWM)
+GPIO33 (ENB)  →  ENB (PWM ขวา)
+GPIO26 (IN3)  →  IN3
+GPIO25 (IN4)  →  IN4
 
-# 
+GND           →  GND (ต้องร่วมกัน)
+```
 
-# \---
+---
 
-# 
+# 🧠 หลักการทำงาน (สำคัญมาก)
 
-# \## Compatibility
+อ้างอิงจากบทความ:
+👉 ESP32 + L298N ควบคุมมอเตอร์ ([Random Nerd Tutorials][1])
 
-# \- ESP32 only ⚠️
+## 🔹 1. ขา Enable (ENA / ENB)
 
-# \- Not compatible with Arduino UNO / Mega
+* ใช้ควบคุม “ความเร็ว”
+* ส่ง PWM → คุมความเร็ว
+* ค่า Duty Cycle มาก = เร็ว
 
-# 
+👉 “ความเร็วแปรตาม duty cycle ของ PWM” ([Random Nerd Tutorials][1])
 
-# \---
+---
 
-# 
+## 🔹 2. ขา IN1-IN4 (ควบคุมทิศทาง)
 
-# \## Documentation
+### มอเตอร์ 1 (ซ้าย)
 
-# Documentation and usage examples are available in the `examples` folder.
+| IN1 | IN2 | ผล       |
+| --- | --- | -------- |
+| 0   | 1   | เดินหน้า |
+| 1   | 0   | ถอยหลัง  |
+| 0   | 0   | หยุด     |
 
-# 
+### มอเตอร์ 2 (ขวา)
 
-# \---
+| IN3 | IN4 | ผล       |
+| --- | --- | -------- |
+| 0   | 1   | เดินหน้า |
+| 1   | 0   | ถอยหลัง  |
 
-# 
+👉 “LOW/HIGH ใช้กำหนดทิศหมุนของมอเตอร์” ([Random Nerd Tutorials][1])
 
-# \## Download
+---
 
-# The latest version of the library is available from:
+# 🚀 การใช้งาน
 
-# \- GitHub repository (recommended)
+## 📌 Include Library
 
-# \- Manual download as ZIP
+```cpp
+#include <RMUTP_CARBOT.h>
+```
 
-# 
+---
 
-# \---
+## 📌 กำหนดขา
 
-# 
+```cpp
+const int ENA = 12;
+const int IN1 = 14;
+const int IN2 = 27;
+const int IN3 = 26;
+const int IN4 = 25;
+const int ENB = 33;
+```
 
-# \## Install
+---
 
-# 
+## 📌 สร้าง Object
 
-# \### Method 1: Manual Install
+```cpp
+RMUTP_CARBOT car(ENA, IN1, IN2, ENB, IN3, IN4);
+```
 
-# 1\. Download the library as ZIP
+---
 
-# 2\. Open Arduino IDE
+## 📌 เริ่มต้นระบบ
 
-# 3\. Go to:
+```cpp
+car.begin(1000, 8, 0, 1);
+```
 
+---
+
+# 🎮 ฟังก์ชันทั้งหมด
+
+## 🔸 ควบคุมแยกล้อ
+
+```cpp
+car.L_Forward(50);
+car.L_Reverse(50);
+
+car.R_Forward(50);
+car.R_Reverse(50);
+```
+
+---
+
+## 🔸 ควบคุมทั้งคัน
+
+```cpp
+car.Forward(100);
+car.Reverse(100);
+car.Stop();
+```
+
+---
+
+# 🔁 การเลี้ยว
+
+## 🟡 เลี้ยวแบบล้อเดียว (Soft Turn)
+
+### ➡️ TurnRight1
+
+* ล้อซ้าย: เดินหน้า
+* ล้อขวา: หยุด
+
+### ⬅️ TurnLeft1
+
+* ล้อซ้าย: หยุด
+* ล้อขวา: เดินหน้า
+
+---
+
+## 🔵 หมุนอยู่กับที่ (Spin Turn)
+
+### 🔄 TurnRight2
+
+* ซ้าย: เดินหน้า
+* ขวา: ถอยหลัง
+  ➡️ หมุนตามเข็มนาฬิกา
+
+---
+
+### 🔄 TurnLeft2
+
+* ซ้าย: ถอยหลัง
+* ขวา: เดินหน้า
+  ➡️ หมุนทวนเข็ม
+
+---
+
+# ⚡ PWM (ความเร็ว)
+
+```cpp
+0 – 100 (%)
+```
+
+ภายใน:
+
+```cpp
+0 – 255 (8-bit)
+```
+
+---
+
+# 📁 ตัวอย่างโค้ด
+
+```cpp
+#include <RMUTP_CARBOT.h>
+
+RMUTP_CARBOT car(12,14,27,33,26,25);
+
+void setup() {
+  car.begin(1000, 8, 0, 1);
+}
+
+void loop() {
+
+  car.Forward(100);
+  delay(2000);
+
+  car.TurnRight2(80);
+  delay(1000);
+
+  car.Stop();
+  delay(1000);
+}
+```
+
+---
+
+# 📦 การติดตั้ง
+
+## วิธีที่ 1 (ZIP)
+
+1. โหลดจาก GitHub
+2. เปิด Arduino IDE
+3. Sketch → Include Library → Add .ZIP
+
+---
+
+## วิธีที่ 2 (Git)
+
+```bash
+git clone https://github.com/yourname/RMUTP_CARBOT.git
+```
+
+---
+
+# ⚠️ ข้อควรระวัง
+
+* ต้องใช้ **GND ร่วมกัน**
+* มอเตอร์ต้องใช้ไฟแยก (ห้ามใช้จาก ESP32)
+* ถ้ามอเตอร์หมุนกลับ → สลับสาย
+
+---
+
+# 💡 สรุปหลักการ (สำคัญสุด)
+
+* IN1/IN2 = กำหนดทิศ
+* ENA/ENB = ควบคุมความเร็ว (PWM)
+* รถวิ่ง = มอเตอร์ 2 ตัวทำงานร่วมกัน
+
+---
+
+# 👨‍💻 ผู้พัฒนา
+
+RMUTP Project
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+[1]: https://randomnerdtutorials.com/esp32-dc-motor-l298n-motor-driver-control-speed-direction/?utm_source=chatgpt.com "ESP32 with DC Motor - Control Speed and Direction | Random Nerd Tutorials"
