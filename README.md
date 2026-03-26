@@ -11,11 +11,10 @@
 * หมุนอยู่กับที่
 * ปรับความเร็วด้วย PWM
 
-
 <p align="center">
-  <img src="image/L298N-label.webp" width="200"/>
+  <img src="image/L298N-label.webp" width="600"/>
 </p>
----
+
 
 # ✨ คุณสมบัติ (Features)
 
@@ -284,7 +283,7 @@ git clone https://github.com/yourname/RMUTP_CARBOT.git
 นาย สุพงศ์ เฉลิมชัยนุวงศ์ 
 
 <p align="center">
-  <img src="image/spg.png" width="200"/>
+  <img src="image/spg.png" width="50"/>
 </p>
 
 
