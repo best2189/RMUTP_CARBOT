@@ -1,38 +1,18 @@
-# RMUTP_CARBOT
+MIT License
 
-ESP32 Motor Driver Library สำหรับรถ 2 ล้อ (L298N)
+Copyright (c) 2026   Supong Chalermchainuwong (RMUTP Project)
 
-## Features
-- ควบคุมมอเตอร์ซ้าย/ขวา
-- PWM ปรับความเร็ว (0–100%)
-- เลี้ยวซ้าย/ขวา
-- รองรับ ESP32 เท่านั้น
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software...
 
-## Usage
-```cpp
-#include "RMUTP_CARBOT.h"
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-const int ENA = 12;
-const int IN1 = 14;
-const int IN2 = 27;
-const int IN3 = 26;
-const int IN4 = 25;
-const int ENB = 33;
-
-const int freq = 1000;
-const int pwmChannelA = 0;
-const int pwmChannelB = 1;
-const int resolution = 8;  
-
-
-RMUTP_CARBOT car(ENA, IN1, IN2, ENB, IN3, IN4);
-
-void setup(void) 
-{
-  car.begin(freq, resolution, pwmChannelA, pwmChannelB);
-}
-
-void loop(void) 
-{
-  car.Forward(80);
-}
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY...
